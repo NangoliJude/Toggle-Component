@@ -1,0 +1,80 @@
+<!Doctype html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8" />
+<title>Button in React Js</title>
+<script src="build/react.js"></script>
+<script src="build/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+<style>
+body{
+	background-color:#ccc;
+	}
+a {
+  color: #AA6839;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:link {
+  color: blue;
+  font-weight: normal;
+  text-decoration: underline;
+}
+</style>
+</head>
+     
+<body>
+<div id="App">
+</div>
+
+
+<script type="text/babel">
+
+//Nangoli Jude Eric
+
+
+const data={
+	para: "What is Lorem Ipsum", 
+	data: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." 
+};
+const styles ={
+	active:{
+		display: "inherit"
+			},
+	inactive:{
+		display: "none"
+		}
+		};
+
+ class App extends React.Component{
+	 constructor(){
+		 super()
+		 this.state={
+			 active: false
+			 };
+			 this.toggle = this.toggle.bind(this)
+		 }
+		 toggle(){
+			this.setState({
+				active: !this.state.active
+				});
+			}
+	 render(){
+		 const stateStyle = this.state.active ? styles.active : styles.inactive;
+		 return(
+		     <section>
+			       <a onClick={this.toggle}>
+				     {this.props.para}
+				   </a>
+				   <p style={stateStyle}>{this.props.data}</p>
+			 </section>
+		)
+		 }
+	 }
+	 
+
+ReactDOM.render(<App para={data.para} data={data.data}/>,document.getElementById("App"));
+</script>
+</body>
+</html>
